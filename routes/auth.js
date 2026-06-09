@@ -15,11 +15,11 @@ router.get("/google",
 // On failure → redirect to login page
 router.get("/google/callback",
   passport.authenticate("google", {
-    failureRedirect: "http://localhost:5173/login",
+    failureRedirect: `${process.env.FRONTEND_URL}/login`,
   }),
   (req, res) => {
     // Auth succeeded — session is created — send user back to React app
-    res.redirect("http://localhost:5173");
+    res.redirect(process.env.FRONTEND_URL);
   }
 );
 
