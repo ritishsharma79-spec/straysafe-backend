@@ -43,5 +43,7 @@ app.get("/", (req, res) => res.json({ message: "StraySafe API is running 🐾" }
 
 //connect DB is a async which returns a oromise ,then when its succes
 connectDB().then(() => {
-  app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
+  app.listen(PORT, "0.0.0.0", () => {
+    console.log(`Server running on port ${PORT}`);
+  });
 });//app.listen is main server toh yaha se hei shuru hoga
