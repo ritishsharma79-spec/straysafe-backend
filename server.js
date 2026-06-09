@@ -13,7 +13,7 @@ const app = express();  //creating a server obj similar to app=flask(__name__)
 const PORT = process.env.PORT || 5000;
 
 app.use(cors({
-  origin: "http://localhost:5173", // this is my react port allowing react 
+ origin: process.env.FRONTEND_URL, // this is my react port allowing react 
   credentials: true,
 }));
 app.use(express.json());//convert the JSON from frontend to Java script object cuse express cant read JSON
