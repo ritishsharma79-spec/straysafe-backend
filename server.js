@@ -10,6 +10,7 @@ import authRoutes from "./routes/auth.js";
 dotenv.config();
 
 const app = express();  //creating a server obj similar to app=flask(__name__)
+app.set("trust proxy", 1);
 const PORT = process.env.PORT || 5000;
 
 app.use(cors({
