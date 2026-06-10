@@ -13,7 +13,7 @@ const app = express();  //creating a server obj similar to app=flask(__name__)
 const PORT = process.env.PORT || 5000;
 
 app.use(cors({
- origin: process.env.FRONTEND_URL, // this is my react port allowing react 
+  origin:      process.env.FRONTEND_URL,
   credentials: true,
 }));
 app.use(express.json());//convert the JSON from frontend to Java script object cuse express cant read JSON
@@ -25,6 +25,8 @@ app.use(session({
   cookie: {
     httpOnly: true,   // JS can't read this cookie — prevents XSS attacks
     maxAge:   7 * 24 * 60 * 60 * 1000, // 7 days in milliseconds
+    secure:   true,        // required for HTTPS
+    sameSite: "none",      // required for cross-domain cookies
   },
 }));
  
