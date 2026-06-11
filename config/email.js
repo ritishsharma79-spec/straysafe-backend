@@ -6,16 +6,12 @@ dotenv.config();
 // deliver email toh gmail karega main uske sath connection bana raha hu
 const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
-  port: 587,
-  secure: false,
-  family: 4,
+  port: 465,
+  secure: true,        // use SSL
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS,
   },
-   connectionTimeout: 10000, // 10 seconds
-   greetingTimeout: 10000,
-   socketTimeout: 15000,
 });
 
 export const sendAnimalListedEmail = async ({ toEmail, toName, animalName }) => {
